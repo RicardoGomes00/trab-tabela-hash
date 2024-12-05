@@ -3,19 +3,16 @@
 #include <string.h>
 #include <time.h>
 
-#define TABLE_SIZE 100 // Tamanho da tabela hash
+#define TABLE_SIZE 100 
 
-// Estrutura do contato
 typedef struct Contato {
     char nome[50];
     char telefone[15];
-    struct Contato* proximo; // Para encadeamento em caso de colisão
+    struct Contato* proximo;
 } Contato;
 
-// Tabela hash
 Contato* tabelaHash[TABLE_SIZE];
 
-// Função hash simples
 unsigned int hash(char* nome) {
     unsigned int valor = 0;
     while (*nome) {
@@ -24,7 +21,6 @@ unsigned int hash(char* nome) {
     return valor % TABLE_SIZE;
 }
 
-// Adicionar contato
 void adicionarContato() {
     char nome[50];
     char telefone[15];
@@ -44,7 +40,6 @@ void adicionarContato() {
     printf("Contato adicionado com sucesso.\n");
 }
 
-// Buscar contato
 void buscarContato() {
     char nome[50];
     printf("Digite o nome para buscar: ");
@@ -66,7 +61,6 @@ void buscarContato() {
     printf("Contato nao encontrado.\n");
 }
 
-// Remover contato
 void removerContato() {
     char nome[50];
     printf("Digite o nome para remover: ");
@@ -93,7 +87,6 @@ void removerContato() {
     printf("Contato nao encontrado.\n");
 }
 
-// Exibir todos os contatos
 void exibirContatos() {
     printf("Lista de contatos:\n");
     for (int i = 0; i < TABLE_SIZE; i++) {
@@ -108,8 +101,7 @@ void exibirContatos() {
 int main() {
     int opcao;
 
-    // Inicializar tabela hash
-    for (int i = 0; i < TABLE_SIZE; i++) {
+     for (int i = 0; i < TABLE_SIZE; i++) {
         tabelaHash[i] = NULL;
     }
 
